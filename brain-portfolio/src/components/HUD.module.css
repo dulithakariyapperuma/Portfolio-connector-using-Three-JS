@@ -1,0 +1,172 @@
+.hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── Title block ── */
+.titleBlock {
+  position: absolute;
+  top: 44px;
+  left: 52px;
+}
+
+.title {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 200;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.titleAccent {
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Badge chips ── */
+.badge {
+  position: absolute;
+  top: 44px;
+  right: 52px;
+  display: flex;
+  gap: 10px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent1);
+  box-shadow: 0 0 8px var(--accent1);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+/* ── Hemisphere Navigation Labels ── */
+.hemisphereLabel {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.3;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hemisphereLabel.active {
+  opacity: 1;
+}
+
+.leftLabel {
+  left: 52px;
+}
+
+.leftLabel.active {
+  transform: translateY(-50%) translateX(8px);
+}
+
+.rightLabel {
+  right: 52px;
+}
+
+.rightLabel.active {
+  transform: translateY(-50%) translateX(-8px);
+}
+
+.labelIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+}
+
+.labelText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.leftLabel .labelText {
+  color: rgba(100, 180, 255, 0.85);
+  text-shadow: 0 0 20px rgba(100, 180, 255, 0.4);
+}
+
+.rightLabel .labelText {
+  color: rgba(255, 130, 180, 0.85);
+  text-shadow: 0 0 20px rgba(255, 130, 180, 0.4);
+}
+
+.labelSubtext {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hemisphereLabel.active .labelSubtext {
+  opacity: 1;
+}
+
+/* ── Bottom hint ── */
+.hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  animation: fadeHint 3s ease-in-out infinite alternate;
+  transition: color 0.3s ease;
+}
+
+@keyframes fadeHint {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 0.65;
+  }
+}

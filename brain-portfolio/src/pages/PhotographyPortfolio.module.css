@@ -1,0 +1,425 @@
+/* ── Photography Portfolio ── */
+
+.page {
+    min-height: 100vh;
+    background: #050510;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.page.visible {
+    opacity: 1;
+}
+
+/* ── Ambient Background ── */
+.bgAmbient {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(255, 110, 247, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 70%, rgba(200, 110, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Back Button ── */
+.backBtn {
+    position: fixed;
+    top: 36px;
+    left: 40px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 110, 247, 0.25);
+    background: rgba(5, 5, 16, 0.7);
+    backdrop-filter: blur(12px);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.backBtn:hover {
+    border-color: rgba(255, 110, 247, 0.6);
+    color: #ff6ef7;
+    box-shadow: 0 0 24px rgba(255, 110, 247, 0.15);
+    transform: translateX(-4px);
+}
+
+.backArrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.backBtn:hover .backArrow {
+    transform: translateX(-4px);
+}
+
+/* ── Hero ── */
+.hero {
+    position: relative;
+    padding: 160px 60px 100px;
+    text-align: center;
+    z-index: 1;
+}
+
+.heroGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 110, 247, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.heroLabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255, 110, 247, 0.6);
+    margin-bottom: 20px;
+}
+
+.heroTitle {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.titleLine {
+    display: block;
+    font-weight: 200;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.titleAccent {
+    display: block;
+    background: linear-gradient(135deg, #ff6ef7, #ffb86e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.heroSubtitle {
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ── Section Titles ── */
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 40px;
+}
+
+.sectionDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff6ef7;
+    box-shadow: 0 0 12px rgba(255, 110, 247, 0.5);
+}
+
+/* ── Category Filter ── */
+.filterSection {
+    position: relative;
+    padding: 0 60px 40px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.filterBar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filterBtn {
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+    border-color: rgba(255, 110, 247, 0.4);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.filterActive {
+    border-color: #ff6ef7;
+    background: rgba(255, 110, 247, 0.1);
+    color: #ff6ef7;
+    box-shadow: 0 0 16px rgba(255, 110, 247, 0.15);
+}
+
+/* ── Gallery ── */
+.gallerySection {
+    position: relative;
+    padding: 0 60px 80px;
+    max-width: 1300px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.galleryItem {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    animation: fadeUp 0.6s ease both;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.4s ease;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.galleryItem:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--item-color, #ff6ef7);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px color-mix(in srgb, var(--item-color) 15%, transparent);
+}
+
+.photoPlaceholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(145deg, rgba(30, 20, 40, 0.9), rgba(15, 10, 25, 0.95));
+}
+
+.placeholderIcon {
+    font-size: 2.5rem;
+    opacity: 0.3;
+}
+
+.placeholderText {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.photoOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 20px;
+    background: linear-gradient(to top, rgba(5, 5, 16, 0.95), transparent);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.galleryItem:hover .photoOverlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.photoCat {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--item-color, #ff6ef7);
+}
+
+.photoTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 6px;
+}
+
+/* ── About Section ── */
+.aboutSection {
+    position: relative;
+    padding: 80px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.aboutContent {}
+
+.aboutText {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 48px;
+}
+
+.aboutStats {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.statNum {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ff6ef7, #ffb86e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.statLabel {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── CTA Section ── */
+.ctaSection {
+    position: relative;
+    padding: 100px 60px;
+    text-align: center;
+    z-index: 1;
+}
+
+.ctaTitle {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaDesc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 36px;
+}
+
+.ctaButton {
+    display: inline-block;
+    padding: 14px 40px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 110, 247, 0.4);
+    background: linear-gradient(135deg, rgba(255, 110, 247, 0.1), rgba(255, 184, 110, 0.05));
+    color: #ff6ef7;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.ctaButton:hover {
+    background: linear-gradient(135deg, rgba(255, 110, 247, 0.2), rgba(255, 184, 110, 0.1));
+    border-color: #ff6ef7;
+    box-shadow: 0 0 40px rgba(255, 110, 247, 0.2);
+    transform: translateY(-2px);
+}
+
+/* ── Footer ── */
+.footer {
+    position: relative;
+    padding: 40px 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+.footer p {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 0.1em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .hero {
+        padding: 120px 24px 60px;
+    }
+
+    .filterSection,
+    .gallerySection,
+    .aboutSection,
+    .ctaSection {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .galleryGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .aboutStats {
+        gap: 24px;
+    }
+
+    .backBtn {
+        top: 20px;
+        left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galleryGrid {
+        grid-template-columns: 1fr;
+    }
+}
